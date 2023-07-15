@@ -53,21 +53,21 @@ public class User implements Initializable {
     void close(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-        stage.close();
     }
 
     @FXML
     void complete(MouseEvent event) throws IOException {
+
        if (size.getValue().equals("4")) {
            System.out.println("4");
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-           stage.close();
            stage.close();
            Stage regstage = new Stage();
            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("board4.fxml")));
            regstage.resizableProperty().setValue(false);
            regstage.initStyle(StageStyle.UNDECORATED);
            regstage.setScene(new Scene(root));
+           new animatefx.animation.RotateInDownRight(root).play();
            regstage.show();
        }
        else if (size.getValue().equals("5")) {
@@ -80,6 +80,7 @@ public class User implements Initializable {
             regstage.resizableProperty().setValue(false);
             regstage.initStyle(StageStyle.UNDECORATED);
             regstage.setScene(new Scene(root));
+           new animatefx.animation.FadeInRight(root).play();
             regstage.show();
         }
        else if (size.getValue().equals("6")) {
@@ -92,6 +93,7 @@ public class User implements Initializable {
            regstage.resizableProperty().setValue(false);
            regstage.initStyle(StageStyle.UNDECORATED);
            regstage.setScene(new Scene(root));
+           new animatefx.animation.SlideInLeft(root).play();
            regstage.show();
        }
        else if (size.getValue().equals("7")) {
@@ -104,18 +106,19 @@ public class User implements Initializable {
            regstage.resizableProperty().setValue(false);
            regstage.initStyle(StageStyle.UNDECORATED);
            regstage.setScene(new Scene(root));
+           new animatefx.animation.JackInTheBox(root).play();
            regstage.show();
        }
        else if (size.getValue().equals("8")) {
            System.out.println("8");
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            stage.close();
-           stage.close();
            Stage regstage = new Stage();
            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("board8.fxml")));
            regstage.resizableProperty().setValue(false);
            regstage.initStyle(StageStyle.UNDECORATED);
            regstage.setScene(new Scene(root));
+           new animatefx.animation.RollIn(root).play();
            regstage.show();
        }
     }

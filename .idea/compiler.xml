@@ -9,8 +9,5 @@
         <module name="Nqueenhw1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Nqueenhw1" target="18" />
-    </bytecodeTargetLevel>
   </component>
 </project>

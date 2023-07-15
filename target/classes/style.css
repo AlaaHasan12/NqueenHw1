@@ -53,12 +53,12 @@
     -fx-border-width: 0px 0px 1px 0px;
     -fx-text-fill: #ffffff;
 }
-.tf_boxEdit{
+.tf_boxEdit {
     -fx-background-color: transparent;
-    -fx-border-color:#f75590;
+    -fx-border-color: #f75590;
     -fx-border-width: 0px 0px 1px 0px;
     -fx-text-fill: #f75590;
-![](../../../../icons8-back-64.png)}
+}
 .tff_box{
     -fx-background-color: transparent;
     -fx-border-color:#fcdde2;
@@ -125,4 +125,7 @@
 {
     -fx-background-color: rgba(255,255,255,0.2);
     -fx-text-fill: #fcdde2;
+    -fx-transition: opacity 2s linear;
 }
+
+

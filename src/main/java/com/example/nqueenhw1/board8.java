@@ -1,11 +1,15 @@
 package com.example.nqueenhw1;
 
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -16,6 +20,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class board8  {
+    GenerateRandomMap generateRandomMap = new GenerateRandomMap();
 
     @FXML
     private Button back;
@@ -212,6 +217,7 @@ public class board8  {
         regstage.resizableProperty().setValue(false);
         regstage.initStyle(StageStyle.UNDECORATED);
         regstage.setScene(new Scene(root));
+        new animatefx.animation.Swing(root).play();
         regstage.show();
     }
 
@@ -239,5 +245,10 @@ public class board8  {
     @FXML
     void playagain(MouseEvent event) {
 
+    }
+
+    @FXML
+    public void generateRandomMap(ActionEvent actionEvent) {
+        generateRandomMap.generatNewMap(board , 8);
     }
 }
