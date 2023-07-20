@@ -21,6 +21,7 @@ import java.util.Objects;
 
 public class board6 {
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
+    int queenArray [][];
     @FXML
     private Button back;
 
@@ -179,6 +180,6 @@ public class board6 {
 
     @FXML
     public void generateRandomMap(ActionEvent actionEvent) {
-        generateRandomMap.generatNewMap(board , 6);
+        generateRandomMap.generatNewMap(board , 6 , queenArray);
     }
 }

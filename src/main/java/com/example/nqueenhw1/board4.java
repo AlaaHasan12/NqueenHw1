@@ -1,6 +1,5 @@
 package com.example.nqueenhw1;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,20 +7,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Objects;
-import java.util.Random;
 
 public class board4 {
+    int queenArray [][] = new int[4][4];
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
 
     @FXML
@@ -32,9 +28,6 @@ public class board4 {
 
     @FXML
     private Button exite;
-
-    @FXML
-    private Button playagain;
 
     @FXML
     private AnchorPane seq0to0;
@@ -83,8 +76,6 @@ public class board4 {
     //lemaraaaaaaa
     @FXML
     private AnchorPane seq3to3;
-    @FXML
-    private Button playagain1;
 
     public static Scene getScene() {
         return null;
@@ -109,10 +100,7 @@ public class board4 {
         regstage.show();
     }
 
-    @FXML
-    void playagain(MouseEvent event) {
 
-    }
 
     @FXML
     void back(MouseEvent event) throws IOException {
@@ -130,6 +118,163 @@ public class board4 {
 
     @FXML
     public void generateRandomMap(ActionEvent actionEvent) {
-        generateRandomMap.generatNewMap(board , 4);
+        generateRandomMap.generatNewMap(board , 4 , queenArray);
+        for (int i = 0 ; i < 4; i++) {
+            for (int j = 0 ;j < 4 ; j++)
+                System.out.print(queenArray[i][j] + " ");
+            System.out.print("\n");
+        }
+
+    }
+
+    @FXML
+    void startPlay(ActionEvent event) {
+
+        int[][] copy2 = Arrays.stream(queenArray).map(int[]::clone).toArray(int[][]::new);
+        int heuristic = 100;
+        int atack = 0;
+        for (int i = 0 ; i < 1 ; i++) {
+            for (int j = 0 ; j < 4 ; j++) {
+                if (queenArray[i][j] == 1) { // find a queen
+                    for (int location = 0 ; location < 1 ; location++ ) { // using to change the location of queen
+                        int[][] copy = Arrays.stream(queenArray).map(int[]::clone).toArray(int[][]::new);
+//                        copy[i][j] =0 ; // making a move
+//                        copy[i][Math.abs(i-location)] = 1; // for a queen
+
+                        // left Direction
+                        int tested = j-1;
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (tested >= 0 && copy[i][tested]!=1) {
+                                tested--;
+                                System.out.println("Left test");
+                            }
+                            else {
+                                if (tested >= 0 && copy[i][tested]==1) {
+                                    atack++;
+                                    tested--;
+                                    System.out.println("Left atack");
+                                }
+                            }
+                        }
+                        //Right Direction
+                        tested = j+1;
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (tested < 4 && copy[i][tested]!=1) {
+                                tested++;
+                                System.out.println("right test");
+                            }
+                            else if(tested <4 && copy[i][tested]==1) {
+                                atack++;
+                                tested++;
+                                System.out.println("right atack");
+                            }
+
+                            }
+
+                        //Up Direction
+                        tested = i-1;
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (i == 0)
+                                break; // in first row its not matter to chack right up
+                            if (tested >=0 && copy[tested][j]!=1) {
+                                tested--;
+                                System.out.println("Up test");
+                            }
+                            else if (tested >=0 && copy[i][tested]==1) {
+                                atack++;
+                                tested--;
+                                System.out.println("up atack");
+                            }
+                        }
+
+                        //Down Direction
+                        tested = i+1;
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (tested < 4  && copy[tested][j] != 1) {
+                                tested++;
+                                System.out.println("Down test");
+                            }
+                            else if (tested < 4 && copy[tested][j] == 1) {
+                                atack++;
+                                tested++;
+                                System.out.println("Down Atack");
+                            }
+
+                        }
+
+                        int testedi = i-1;
+                        int testedj = j-1;
+                        //Left Up Direction
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (i == 0)
+                                break; // in first row its not matter to chack right up
+                            if (testedi >=0 && testedj >= 0 && copy[testedi][testedj]!=1) {
+                                testedi--;
+                                testedj--;
+                                System.out.println("Left up test");
+                            }
+                          else  if (testedi >=0 && testedj >= 0  && copy[testedi][testedj]==1) {
+                                atack++;
+                                testedi--;
+                                testedj--;
+                                System.out.println("Left up atack");
+                            }
+                        }
+
+                        testedi = i+1;
+                        testedj = j-1;
+                        //Left down Direction
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (testedi <4  && testedj >=0 && copy[testedi][testedj]!=1) {
+                                testedi++;
+                                testedj--;
+                                System.out.println("Left down test");
+                            }
+                           else if (testedi >= 0 && testedj >=0 && copy[testedi][testedj]==1) {
+                                atack++;
+                                testedi++;
+                                testedj--;
+                                System.out.println("Left down atack");
+                            }
+                        }
+                        testedi = i-1;
+                        testedj = j+1;
+                        //Right Up Direction
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (i == 0)
+                                 break; // in first row its not matter to chack right up
+                            if (testedi >=0  && testedj < 4 && copy[testedi][testedj]!=1) {
+                                testedi--;
+                                testedj++;
+                                System.out.println("right up test");
+                            }
+                           else if (testedi <4 && testedj <4 && copy[testedi][testedj]==1) {
+                                atack++;
+                                testedi--;
+                                testedj++;
+                                System.out.println("right up atack");
+                            }
+                        }
+                        testedi = i+1;
+                        testedj = j+1;
+                        //Right Down Direction
+                        for (int test = 0 ; test < 4 ; test++) {
+                            if (testedi <4  && testedj < 4 && copy[testedi][testedj]!=1) {
+                                testedi++;
+                                testedj++;
+                                System.out.println("right down test");
+                            }
+                           else if (testedi > 0 && testedj < 4 && copy[testedi][testedj]==1) {
+                                atack++;
+                                testedi++;
+                                testedj++;
+                                System.out.println("right down atack");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println(atack);
     }
 }

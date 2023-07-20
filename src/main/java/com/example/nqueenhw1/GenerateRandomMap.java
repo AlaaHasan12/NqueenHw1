@@ -1,7 +1,6 @@
 package com.example.nqueenhw1;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,7 +9,16 @@ import javafx.scene.layout.GridPane;
 
 public class GenerateRandomMap {
 
-    public void clearBoard (GridPane board , int num ) {
+    public void randomMatrix (int [][] queenArray, int num) {
+        for (int i = 0; i < num ; i++) {
+            for (int j = 0 ; j < num; j++) {
+                queenArray[i][j] = 0;
+            }
+        }
+    }
+
+    public void clearBoard (GridPane board , int num , int [][] queenArray  ) {
+        randomMatrix(queenArray,num);
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < num; j++) {
                 ObservableList<Node> node = board.getChildren();
@@ -20,11 +28,13 @@ public class GenerateRandomMap {
             }
         }
     }
-    public void randomMap(GridPane board , int num) {
+    public void randomMap(GridPane board , int num , int [][] queenArray ) {
+            randomMatrix(queenArray , num);
         for (int i = 0 ; i < num ; i++) {
-            int index = (i*num)+(int) (Math.random()*num);
+            int random = (int)(Math.random()*num);
+            int index = (i*num)+(int) (random);
+            queenArray[i][random] = 1;
             ObservableList<Node> node = board.getChildren();
-            System.out.println(index);
             Node pane = node.get(index);
             AnchorPane anchorPane = (AnchorPane)pane;
             Image img = new Image(getClass().getResourceAsStream("crown.png"));
@@ -35,9 +45,10 @@ public class GenerateRandomMap {
 
         }
     }
-    public void generatNewMap (GridPane board , int num) {
-        clearBoard(board , num);
-        randomMap(board , num);
+    public void generatNewMap (GridPane board , int num ,int queenArray[][]) {
+        clearBoard(board , num , queenArray);
+        randomMap(board , num , queenArray);
+
     }
 
 }

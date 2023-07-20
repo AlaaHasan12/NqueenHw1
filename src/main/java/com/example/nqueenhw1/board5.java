@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class board5 {
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
-
+    int queenArray [][];
     @FXML
     private Button back;
 
@@ -140,6 +140,6 @@ public class board5 {
         regstage.show();}
     @FXML
     public void generateRandomMap(ActionEvent actionEvent) {
-        generateRandomMap.generatNewMap(board , 5);
+        generateRandomMap.generatNewMap(board , 5 , queenArray);
     }
 }
