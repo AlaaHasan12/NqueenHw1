@@ -1,7 +1,9 @@
 package com.example.nqueenhw1;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,7 +19,7 @@ public class GenerateRandomMap {
         }
     }
 
-    public void clearBoard (GridPane board , int num , int [][] queenArray  ) {
+    public void clearBoard (GridPane board , int num , int [][] queenArray) {
         randomMatrix(queenArray,num);
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < num; j++) {
@@ -28,12 +30,24 @@ public class GenerateRandomMap {
             }
         }
     }
+
+    public void justClearBoard (GridPane board, int num) {
+
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < num; j++) {
+                ObservableList<Node> node = board.getChildren();
+                Node pane = node.get((i * num) + j);
+                AnchorPane anchorPane = (AnchorPane) pane;
+                    anchorPane.getChildren().clear();
+            }
+        }
+    }
     public void randomMap(GridPane board , int num , int [][] queenArray ) {
             randomMatrix(queenArray , num);
         for (int i = 0 ; i < num ; i++) {
-            int random = (int)(Math.random()*num);
-            int index = (i*num)+(int) (random);
-            queenArray[i][random] = 1;
+            int random = (int)(10*Math.random()%4); // result 0 - 3
+            int index = random*num + i;
+            queenArray[random][i] = 1;
             ObservableList<Node> node = board.getChildren();
             Node pane = node.get(index);
             AnchorPane anchorPane = (AnchorPane)pane;
@@ -42,13 +56,10 @@ public class GenerateRandomMap {
             imageView.fitWidthProperty().bind(anchorPane.widthProperty());
             imageView.fitHeightProperty().bind(anchorPane.heightProperty());
             anchorPane.getChildren().add(imageView);
-
         }
     }
     public void generatNewMap (GridPane board , int num ,int queenArray[][]) {
-        clearBoard(board , num , queenArray);
-        randomMap(board , num , queenArray);
-
+            clearBoard(board , num , queenArray);
+            randomMap(board , num , queenArray);
     }
-
 }
