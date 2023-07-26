@@ -20,9 +20,11 @@ import java.util.Objects;
 import java.util.Random;
 
 public class board4 {
+    User user = new User();
     int queenArray[][] = new int[4][4];
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
     HillClimbing hillClimbing = new HillClimbing();
+    SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing();
 
     @FXML
     private Button back;
@@ -133,13 +135,15 @@ public class board4 {
 
     @FXML
     void startPlay(ActionEvent event) throws Exception {
-
         int[] state = new int[N];
         int[][] board1 = new int[N][N];
 
+
         hillClimbing.initializeStateAndBoard(queenArray, state, board1);
-       // Do hill climbing on the board obtained
-        hillClimbing.hillClimbing(board1, state , board);
+       hillClimbing.hillClimbing(board1, state , board);
+
+        //simulatedAnnealing.initializeStateAndBoard(queenArray, state, board1);
+        //simulatedAnnealing.simulatedAnnealing(board1, state , board);
     }
 
 

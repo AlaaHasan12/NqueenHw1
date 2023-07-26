@@ -16,8 +16,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class board5 {
+
+    int queenArray [][] = new int[5][5];
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
-    int queenArray [][];
     @FXML
     private Button back;
 
@@ -140,6 +141,16 @@ public class board5 {
         regstage.show();}
     @FXML
     public void generateRandomMap(ActionEvent actionEvent) {
+
         generateRandomMap.generatNewMap(board , 5 , queenArray);
+        for (int i = 0 ; i < 5; i++) {
+            for (int j = 0 ;j < 5 ; j++)
+                System.out.print(queenArray[i][j] + " ");
+            System.out.print("\n");
+        }
+    }
+
+
+    public void startPlay(ActionEvent actionEvent) {
     }
 }

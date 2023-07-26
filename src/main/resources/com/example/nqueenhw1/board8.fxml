@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="660.0" prefWidth="660.0" style="-fx-background-color: #e6fff2;" styleClass="anchorborder" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nqueenhw1.board8">
+<AnchorPane prefHeight="660.0" prefWidth="660.0" style="-fx-background-color: #e6fff2;" styleClass="anchorborder" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nqueenhw1.board8">
     <children>
         <GridPane fx:id="board" layoutX="59.0" layoutY="83.0" prefHeight="396.0" prefWidth="542.0" style="-fx-background-color: white;" styleClass="container" stylesheets="@../../../style.css">
             <columnConstraints>
@@ -129,6 +129,11 @@
             </graphic>
         </Button>
       <Button layoutX="118.0" layoutY="549.0" mnemonicParsing="false" onAction="#generateRandomMap" onMouseClicked="#playagain" prefHeight="38.0" prefWidth="209.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Generate random map">
+         <font>
+            <Font name="Comic Sans MS" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="126.0" layoutY="496.0" mnemonicParsing="false" onAction="#startPlay" prefHeight="38.0" prefWidth="429.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Start Play">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>

@@ -21,8 +21,8 @@ import java.util.Objects;
 
 public class board7  {
 
+    int queenArray [][] = new int[7][7];
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
-    int queenArray [][];
     @FXML
     private Button back;
 
@@ -218,7 +218,14 @@ public class board7  {
     @FXML
     public void generateRandomMap(ActionEvent actionEvent) {
         generateRandomMap.generatNewMap(board , 7 , queenArray);
+        for (int i = 0 ; i < 7; i++) {
+            for (int j = 0 ;j < 7; j++)
+                System.out.print(queenArray[i][j] + " ");
+            System.out.print("\n");
     }
 
+    }
 
+    public void startPlay(ActionEvent actionEvent) {
+    }
 }
