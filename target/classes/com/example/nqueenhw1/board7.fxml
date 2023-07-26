@@ -88,7 +88,7 @@
                 <Font name="Comic Sans MS Bold" size="29.0" />
             </font>
         </Text>
-        <Button fx:id="exite" layoutX="377.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#exite" prefHeight="38.0" prefWidth="210.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Exite" textFill="#077e22">
+        <Button fx:id="exite" layoutX="381.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#exite" prefHeight="38.0" prefWidth="210.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Exit" textFill="#077e22">
             <font>
                 <Font name="Comic Sans MS" size="17.0" />
             </font>
@@ -111,7 +111,12 @@
                 </ImageView>
             </graphic>
         </Button>
-      <Button layoutX="103.0" layoutY="530.0" mnemonicParsing="false" onAction="#generateRandomMap" onMouseClicked="#playagain" prefHeight="38.0" prefWidth="210.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Generate random map">
+      <Button layoutX="101.0" layoutY="568.0" mnemonicParsing="false" onAction="#generateRandomMap" onMouseClicked="#playagain" prefHeight="38.0" prefWidth="210.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Generate random map">
+         <font>
+            <Font name="Comic Sans MS" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="133.0" layoutY="514.0" mnemonicParsing="false" onAction="#startPlay" prefHeight="38.0" prefWidth="429.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Start Play">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>

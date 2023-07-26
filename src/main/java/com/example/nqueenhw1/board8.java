@@ -21,8 +21,8 @@ import java.util.Objects;
 
 public class board8  {
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
-    int queenArray [][];
-
+    HillClimbing hillClimbing = new HillClimbing();
+    int queenArray[][] = new int[8][8];
     @FXML
     private Button back;
 
@@ -251,5 +251,15 @@ public class board8  {
     @FXML
     public void generateRandomMap(ActionEvent actionEvent) {
         generateRandomMap.generatNewMap(board , 8 ,queenArray);
+    }
+    @FXML
+    void startPlay(ActionEvent event) throws Exception {
+
+        int[] state = new int[8];
+        int[][] board1 = new int[8][8];
+
+        hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,8);
+        // Do hill climbing on the board obtained
+        hillClimbing.hillClimbing(board1, state , board, 8);
     }
 }

@@ -82,9 +82,6 @@ public class board4 {
     private AnchorPane seq3to3;
     private static final int N = 4;
 
-    public GridPane getGridPane () {
-        return this.board;
-    }
 
     @FXML
     void close(MouseEvent event) {
@@ -137,9 +134,9 @@ public class board4 {
         int[] state = new int[N];
         int[][] board1 = new int[N][N];
 
-        hillClimbing.initializeStateAndBoard(queenArray, state, board1);
+        hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,4);
        // Do hill climbing on the board obtained
-        hillClimbing.hillClimbing(board1, state , board);
+        hillClimbing.hillClimbing(board1, state , board, 4);
     }
 
 
