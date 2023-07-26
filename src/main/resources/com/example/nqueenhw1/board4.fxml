@@ -49,7 +49,7 @@
             <Font name="Comic Sans MS Bold" size="29.0" />
          </font>
       </Text>
-      <Button fx:id="exite" layoutX="375.0" layoutY="553.0" mnemonicParsing="false" onMouseClicked="#exite" prefHeight="38.0" prefWidth="203.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Exite" textFill="#077e22">
+      <Button fx:id="exite" layoutX="375.0" layoutY="553.0" mnemonicParsing="false" onMouseClicked="#exite" prefHeight="38.0" prefWidth="203.0" styleClass="trans_signoutbtn_colored_border" stylesheets="@../../../style.css" text="Exit" textFill="#077e22">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>

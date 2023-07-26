@@ -1,15 +1,16 @@
 package com.example.nqueenhw1;
-
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 public class GenerateRandomMap {
+    int x;
+    public void setNumber(int x ) {
+
+    }
 
     public void randomMatrix (int [][] queenArray, int num) {
         for (int i = 0; i < num ; i++) {

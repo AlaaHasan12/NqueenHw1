@@ -19,6 +19,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class User implements Initializable {
+    int number = 33;
+    HillClimbing hillClimbing = new HillClimbing();
 
     @FXML
     private ComboBox<String> algorithm;
@@ -59,7 +61,9 @@ public class User implements Initializable {
     void complete(MouseEvent event) throws IOException {
 
        if (size.getValue().equals("4")) {
-           System.out.println("4");
+           number = 4;
+
+           System.out.println(number);
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            stage.close();
            Stage regstage = new Stage();
@@ -71,6 +75,7 @@ public class User implements Initializable {
            regstage.show();
        }
        else if (size.getValue().equals("5")) {
+           number = 5;
             System.out.println("5");
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            stage.close();
@@ -84,6 +89,7 @@ public class User implements Initializable {
             regstage.show();
         }
        else if (size.getValue().equals("6")) {
+           number = 6;
            System.out.println("6");
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            stage.close();
@@ -97,6 +103,7 @@ public class User implements Initializable {
            regstage.show();
        }
        else if (size.getValue().equals("7")) {
+           number = 7;
            System.out.println("7");
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            stage.close();
@@ -110,6 +117,7 @@ public class User implements Initializable {
            regstage.show();
        }
        else if (size.getValue().equals("8")) {
+           number = 8;
            System.out.println("8");
            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            stage.close();

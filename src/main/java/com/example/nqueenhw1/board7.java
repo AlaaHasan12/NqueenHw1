@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class board7  {
+    HillClimbing hillClimbing = new HillClimbing();
+    int queenArray[][] = new int[7][7];
 
     int queenArray [][] = new int[7][7];
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
@@ -222,6 +224,16 @@ public class board7  {
             for (int j = 0 ;j < 7; j++)
                 System.out.print(queenArray[i][j] + " ");
             System.out.print("\n");
+    }
+    @FXML
+    void startPlay(ActionEvent event) throws Exception {
+
+        int[] state = new int[7];
+        int[][] board1 = new int[7][7];
+
+        hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,7);
+        // Do hill climbing on the board obtained
+        hillClimbing.hillClimbing(board1, state , board, 7);
     }
 
     }
