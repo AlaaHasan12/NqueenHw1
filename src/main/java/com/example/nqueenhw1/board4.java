@@ -7,24 +7,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.Random;
 
 public class board4 {
-    User user = new User();
     int queenArray[][] = new int[4][4];
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
     HillClimbing hillClimbing = new HillClimbing();
     SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing();
+    public String algorithemname = User.algorithemname();
 
     @FXML
     private Button back;
@@ -79,11 +76,20 @@ public class board4 {
 
     @FXML
     private AnchorPane seq3to2;
-    //lemaraaaaaaa
+
     @FXML
     private AnchorPane seq3to3;
-    private static final int N = 4;
 
+    @FXML
+    public TextField txt1;
+
+    @FXML
+    public TextField txt2;
+
+    @FXML
+    public TextField txt3;
+
+    private static final int N = 4;
     public GridPane getGridPane () {
         return this.board;
     }
@@ -137,14 +143,23 @@ public class board4 {
     void startPlay(ActionEvent event) throws Exception {
         int[] state = new int[N];
         int[][] board1 = new int[N][N];
+        if (algorithemname == "Hill Climbing") {
+            hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,4);
+            hillClimbing.hillClimbing(board1, state , board , 4);
+        }
+        else if(algorithemname =="Simulated annealing") {
+
+            simulatedAnnealing.initializeStateAndBoard(queenArray, state, board1, 4);
+            simulatedAnnealing.simulatedAnnealing(board1, state, board, 4);
 
 
-        hillClimbing.initializeStateAndBoard(queenArray, state, board1);
-       hillClimbing.hillClimbing(board1, state , board);
-
-        //simulatedAnnealing.initializeStateAndBoard(queenArray, state, board1);
-        //simulatedAnnealing.simulatedAnnealing(board1, state , board);
+        }
+        else {
+            System.out.println("WRONG!");
+        }
     }
+
+
 
 
 

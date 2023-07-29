@@ -19,6 +19,9 @@ public class board5 {
     int queenArray[][] = new int[5][5];
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
     HillClimbing hillClimbing = new HillClimbing();
+    SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing();
+    public String algorithemname = User.algorithemname();
+
     @FXML
     private Button back;
 
@@ -150,8 +153,19 @@ public class board5 {
         int[] state = new int[5];
         int[][] board1 = new int[5][5];
 
-        hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,5);
-        // Do hill climbing on the board obtained
-        hillClimbing.hillClimbing(board1, state , board , 5);
+        if (algorithemname == "Hill Climbing") {
+
+            hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,5);
+            hillClimbing.hillClimbing(board1, state , board , 5);
+        }
+        else if(algorithemname =="Simulated annealing") {
+            simulatedAnnealing.initializeStateAndBoard(queenArray, state, board1, 5);
+            simulatedAnnealing.simulatedAnnealing(board1, state, board, 5);
+
+
+        }
+        else {
+            System.out.println("WRONG!");
+        }
     }
 }

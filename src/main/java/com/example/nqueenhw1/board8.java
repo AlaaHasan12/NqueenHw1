@@ -22,7 +22,9 @@ import java.util.Objects;
 public class board8  {
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
     HillClimbing hillClimbing = new HillClimbing();
+    SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing();
     int queenArray[][] = new int[8][8];
+    public String algorithemname = User.algorithemname();
     @FXML
     private Button back;
 
@@ -257,9 +259,19 @@ public class board8  {
 
         int[] state = new int[8];
         int[][] board1 = new int[8][8];
+        if (algorithemname == "Hill Climbing") {
 
-        hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,8);
-        // Do hill climbing on the board obtained
-        hillClimbing.hillClimbing(board1, state , board, 8);
+            hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,8);
+            hillClimbing.hillClimbing(board1, state , board , 8);
+        }
+        else if(algorithemname =="Simulated annealing") {
+            simulatedAnnealing.initializeStateAndBoard(queenArray, state, board1, 8);
+            simulatedAnnealing.simulatedAnnealing(board1, state, board, 8);
+
+
+        }
+        else {
+            System.out.println("WRONG!");
+        }
     }
 }
