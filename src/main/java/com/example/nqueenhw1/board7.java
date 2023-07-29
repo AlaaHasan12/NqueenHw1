@@ -21,9 +21,11 @@ import java.util.Objects;
 
 public class board7  {
     HillClimbing hillClimbing = new HillClimbing();
+    SimulatedAnnealing simulatedAnnealing  = new SimulatedAnnealing();
     int queenArray[][] = new int[7][7];
-
     GenerateRandomMap generateRandomMap = new GenerateRandomMap();
+    public String algorithemname = User.algorithemname();
+
     @FXML
     private Button back;
 
@@ -218,7 +220,12 @@ public class board7  {
 
     @FXML
     public void generateRandomMap(ActionEvent actionEvent) {
-        generateRandomMap.generatNewMap(board , 7 , queenArray);
+        generateRandomMap.generatNewMap(board, 7, queenArray);
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++)
+                System.out.print(queenArray[i][j] + " ");
+            System.out.print("\n");
+        }
     }
     @FXML
     void startPlay(ActionEvent event) throws Exception {
@@ -226,10 +233,19 @@ public class board7  {
         int[] state = new int[7];
         int[][] board1 = new int[7][7];
 
-        hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,7);
-        // Do hill climbing on the board obtained
-        hillClimbing.hillClimbing(board1, state , board, 7);
+        if (algorithemname == "Hill Climbing") {
+
+            hillClimbing.initializeStateAndBoard(queenArray, state, board1 ,7);
+            hillClimbing.hillClimbing(board1, state , board , 7);
+        }
+        else if(algorithemname =="Simulated annealing") {
+            simulatedAnnealing.initializeStateAndBoard(queenArray, state, board1, 7);
+            simulatedAnnealing.simulatedAnnealing(board1, state, board, 7);
+
+
+        }
+        else {
+            System.out.println("WRONG!");
+        }
     }
-
-
 }
